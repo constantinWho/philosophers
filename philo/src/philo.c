@@ -6,7 +6,7 @@
 /*   By: chustei <chustei@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 13:13:29 by chustei           #+#    #+#             */
-/*   Updated: 2023/08/08 19:06:21 by chustei          ###   ########.fr       */
+/*   Updated: 2023/08/08 19:24:32 by chustei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	isnum(char *str)
 
 int	ft_atoi(const char *nptr)
 {
-	long long int	res;
-	long long int	sign;
+	long	res;
+	long	sign;
 
 	res = 0;
 	sign = 1;
@@ -50,6 +50,8 @@ int	ft_atoi(const char *nptr)
 	{
 		res = res * 10 + *nptr - '0';
 		nptr++;
+		if (res * sign > 2147483647 || res * sign < -2147483648)
+			return (0);
 	}
 	return (res * sign);
 }
