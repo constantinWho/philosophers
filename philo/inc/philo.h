@@ -6,7 +6,7 @@
 /*   By: chustei <chustei@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 13:09:55 by chustei           #+#    #+#             */
-/*   Updated: 2023/08/08 13:22:49 by chustei          ###   ########.fr       */
+/*   Updated: 2023/08/08 18:27:36 by chustei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,6 @@
 
 # include <unistd.h>
 # include <stdio.h>
+# include <stdlib.h>
 
 #endif
