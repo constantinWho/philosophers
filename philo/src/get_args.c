@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   get_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chustei <chustei@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/08 13:09:55 by chustei           #+#    #+#             */
-/*   Updated: 2023/08/09 12:59:19 by chustei          ###   ########.fr       */
+/*   Created: 2023/08/09 12:57:51 by chustei           #+#    #+#             */
+/*   Updated: 2023/08/09 13:55:04 by chustei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "./philo.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
+int	*get_args(int size, char **av)
+{
+	int	i;
+	int	*args;
 
-int	isnum(char *str);
-int	atoi(const char *nptr);
-int	*get_args(int size, char **av);
-
-#endif
+	i = 0;
+	args = (int *)malloc(sizeof(int *) * size);
+	while (av[i])
+	{
+		if (!isnum(av[i]))
+		{
+			printf("Error: Wrong Input");
+			free(args);
+			return (NULL);
+		}
+		args[i] = atoi(av[i]);
+		i++;
+	}
+	return (args);
+}

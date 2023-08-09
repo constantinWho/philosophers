@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   isnum.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chustei <chustei@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/08 13:09:55 by chustei           #+#    #+#             */
-/*   Updated: 2023/08/09 12:59:19 by chustei          ###   ########.fr       */
+/*   Created: 2023/08/09 12:56:59 by chustei           #+#    #+#             */
+/*   Updated: 2023/08/09 13:52:46 by chustei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "./philo.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
+int	isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
 
-int	isnum(char *str);
-int	atoi(const char *nptr);
-int	*get_args(int size, char **av);
+int	isnum(char *str)
+{
+	int	i;
 
-#endif
+	i = 0;
+	if (str[i] == '+')
+		i++;
+	while (str[i])
+	{
+		if (!isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
