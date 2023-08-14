@@ -6,7 +6,7 @@
 /*   By: chustei <chustei@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 13:13:29 by chustei           #+#    #+#             */
-/*   Updated: 2023/08/09 13:55:58 by chustei          ###   ########.fr       */
+/*   Updated: 2023/08/14 14:27:45 by chustei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,50 @@ int	valid_args(int *args, int count)
 	return (1);
 }
 
+int	check_input(int *nums, int ac, char **av)
+{
+	nums = get_args(ac - 1, &av[1]);
+	if (!nums || !valid_args(nums, ac - 1))
+		return (0);
+	return (1);
+}
+
+/* void	init_args(t_arg *args, int *nums)
+{
+	args->num_of_philos = nums[0];
+	args->time_to_die = nums[1];
+	args->time_to_eat = nums[2];
+	args->time_to_sleep = nums[3];
+	if (nums[4])
+		args->num_must_eat = nums[4];
+} */
+
 int	main(int ac, char **av)
 {
-	int	*args;
+	int				*nums;
+	t_arg			args;
 
-	args = NULL;
+	nums = NULL;
 	if (ac >= 5 && ac <= 6)
 	{
-		args = get_args(ac - 1, &av[1]);
-		if (!args || !valid_args(args, ac - 1))
+		if (!check_input(nums, ac, av))
 			return (0);
+		args.num_of_philos = nums[0];
+		args.time_to_die = nums[1];
+		args.time_to_eat = nums[2];
+		args.time_to_sleep = nums[3];
+		if (nums[4])
+			args.num_must_eat = nums[4];
+/* 		init_args(args, nums); */
+		printf("num_of_philos: %d\n", args.num_of_philos);
+		printf("time_to_die: %d\n", args.time_to_die);
+		printf("time_to_eat: %d\n", args.time_to_eat);
+		printf("time_to_sleep: %d\n", args.time_to_sleep);
+		if (nums[4])
+			printf("num_must_eat: %d\n", args.num_must_eat);
 	}
 	else
-		printf("Error: Wrong Number of Args\n");
-	free(args);
+		printf("Error: Please Provide 4 or 5 Arguments\n");
+	free(nums);
 	return (0);
 }
